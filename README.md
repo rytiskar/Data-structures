@@ -1,2 +1,3 @@
-# Linked-list
-Linked list implementation using C++
+# Data-structures built with C++
+Linked list
+Dynamic array
