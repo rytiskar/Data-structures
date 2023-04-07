@@ -1,6 +1,6 @@
 # Data-structures
-* Linked list
+* [Linked list](https://github.com/rytiskar/Data-structures/tree/main/linked-list)
 
-* Dynamic array
+* [Dynamic array](https://github.com/rytiskar/Data-structures/tree/main/dynamic-array)
 
-* Deque
+* [Deque](https://github.com/rytiskar/Data-structures/tree/main/deque)
