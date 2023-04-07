@@ -1,4 +1,4 @@
-# Data-structures built with C++
+# Data-structures
 Linked list
 
 Dynamic array
