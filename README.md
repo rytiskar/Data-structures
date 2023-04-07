@@ -1,4 +1,6 @@
 # Data-structures
-Linked list
+* Linked list
 
-Dynamic array
+* Dynamic array
+
+* Deque
