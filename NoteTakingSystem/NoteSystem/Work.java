@@ -1,9 +1,10 @@
 package NoteSystem;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Work extends Note implements Postponable, Cloneable
+public class Work extends Note implements Postponable, Cloneable, Serializable
 {
     private static int numberOfWorkNotes = 0;
     private List<String> personNames;

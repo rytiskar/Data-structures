@@ -1,9 +1,10 @@
 package NoteSystem;
+import java.io.Serializable;
 import java.lang.annotation.Documented;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-public class Personal extends Note implements Creatable, Cloneable
+public class Personal extends Note implements Creatable, Cloneable, Serializable
 {
     private ArrayList<String> shoppingList;
     private ArrayList<String> birthdayGiftIdeas;

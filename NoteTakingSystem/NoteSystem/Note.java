@@ -1,10 +1,13 @@
 package NoteSystem;
+import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
-public abstract class Note implements Creatable
+public abstract class Note implements Creatable, Comparable<Note>, Serializable
 {
     private static final int MAX_NUMBER_OF_NOTES = 100;
     private static int numberOfNotes = 0;
+    public static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
     private String title;
     private String shortDescription;
@@ -27,6 +30,21 @@ public abstract class Note implements Creatable
     }
 
 
+    @Override
+    public int compareTo(Note other) {
+        LocalDateTime thisDeadline = this.getDeadline();
+        LocalDateTime otherDeadline = other.getDeadline();
+
+        if (thisDeadline == null && otherDeadline == null) {
+            return 0; // Both deadlines are null, consider them equal
+        } else if (thisDeadline == null) {
+            return -1; // This note has no deadline, should come before the other note
+        } else if (otherDeadline == null) {
+            return 1; // The other note has no deadline, should come before this note
+        } else {
+            return thisDeadline.compareTo(otherDeadline);
+        }
+    }
     // get functions
     public static int getNumberOfNotes() { return numberOfNotes; }
     public String getTitle() { return this.title; }

@@ -1,0 +1,18 @@
+Note Type: Personal
+Title: Shopping List
+Description: Grocery items to buy
+Details: Milk, Eggs, Bread, Apples
+Deadline: 2023-05-20 09:00
+
+Note Type: Work
+Title: Project Meeting
+Description: Discuss project updates
+Details: Prepare presentation slides
+Deadline: 2023-05-15 14:30
+Meeting Link: https://example.com/meeting
+
+Note Type: Personal
+Title: Fitness Goals
+Description: Daily exercise routine
+Details: 30 minutes of cardio, 15 minutes of strength training
+Deadline: 2023-05-18 18:00
