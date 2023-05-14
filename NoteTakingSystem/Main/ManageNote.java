@@ -1,7 +1,6 @@
 package Main;
 import NoteSystem.*;
 
-import javax.swing.plaf.synth.SynthTextAreaUI;
 import java.io.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -195,12 +194,13 @@ public class ManageNote {
         displayPersonalNotes();
         displayWorkNotes();
     }
-    private void saveNotes() {
-        Thread saveThread = new Thread(new SaveThread(personalNotes, workNotes));
-        saveThread.start();
+    private void saveNotes()
+    {
+        Thread saveButtonThread = new Thread(new SaveButtonThread(personalNotes, workNotes));
+        saveButtonThread.start();
     }
     private void loadNotes() {
-        Thread loadThread = new Thread(new LoadThread(personalNotes, workNotes));
+        Thread loadThread = new Thread(new LoadButtonThread(personalNotes, workNotes));
         loadThread.start();
     }
     private static void readInput() {

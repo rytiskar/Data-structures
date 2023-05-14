@@ -1,20 +1,14 @@
 package Main;
 import NoteSystem.*;
 
-import javax.swing.plaf.synth.SynthTextAreaUI;
 import java.io.*;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.Scanner;
-import java.time.format.DateTimeParseException;
 
-public class LoadThread implements Runnable {
+public class LoadButtonThread implements Runnable {
     private List<Personal> personalNotes;
     private List<Work> workNotes;
 
-    public LoadThread(List<Personal> personalNotes, List<Work> workNotes) {
+    public LoadButtonThread(List<Personal> personalNotes, List<Work> workNotes) {
         this.personalNotes = personalNotes;
         this.workNotes = workNotes;
     }
