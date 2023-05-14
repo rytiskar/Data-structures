@@ -196,12 +196,12 @@ public class ManageNote {
     }
     private void saveNotes()
     {
-        Thread saveButtonThread = new Thread(new SaveButtonThread(personalNotes, workNotes));
-        saveButtonThread.start();
+        Thread thread = new Thread(new SaveButtonThread(personalNotes, workNotes));
+        thread.start();
     }
     private void loadNotes() {
-        Thread loadThread = new Thread(new LoadButtonThread(personalNotes, workNotes));
-        loadThread.start();
+        Thread thread = new Thread(new LoadButtonThread(personalNotes, workNotes));
+        thread.start();
     }
     private static void readInput() {
         System.out.print("Enter the path of the input file: ");
