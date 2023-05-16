@@ -1,5 +1,7 @@
 package NoteSystem;
+import javax.swing.text.DateFormatter;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -7,7 +9,7 @@ public abstract class Note implements Creatable, Comparable<Note>, Serializable
 {
     private static final int MAX_NUMBER_OF_NOTES = 100;
     private static int numberOfNotes = 0;
-    public static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+    public static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
     private String title;
     private String shortDescription;

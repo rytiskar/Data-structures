@@ -3,6 +3,7 @@ import NoteSystem.*;
 
 import java.awt.*;
 import java.io.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -12,11 +13,10 @@ import java.time.format.DateTimeParseException;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.*;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 
 public class MainController {
 
@@ -31,7 +31,7 @@ public class MainController {
     @FXML
     private TextField detailsTextField;
     @FXML
-    private TextField deadlineTextField;
+    private DatePicker deadlineDatePicker;
     @FXML
     private Button addNoteButton;
     @FXML
@@ -48,8 +48,29 @@ public class MainController {
     private TextField meetingLinkTextField;
 
     public void initialize() {
-        noteTypeChoiceBox.setItems(FXCollections.observableArrayList("Personal", "Work"));
+        noteTypeChoiceBox.setOnAction(event -> {
+            try {
+                String selectedNoteType = noteTypeChoiceBox.getValue();
+
+                if (selectedNoteType.equals("Personal")) {
+                    titleTextField.setDisable(false);
+                    descriptionTextField.setDisable(false);
+                    detailsTextField.setDisable(false);
+                    deadlineDatePicker.setDisable(false);
+                    meetingLinkTextField.setDisable(true);
+                } else if (selectedNoteType.equals("Work")) {
+                    titleTextField.setDisable(false);
+                    descriptionTextField.setDisable(false);
+                    detailsTextField.setDisable(false);
+                    deadlineDatePicker.setDisable(false);
+                    meetingLinkTextField.setDisable(false);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
     }
+
 
     @FXML
     private void addNote(ActionEvent event) {
@@ -57,20 +78,24 @@ public class MainController {
         String title = titleTextField.getText();
         String description = descriptionTextField.getText();
         String details = detailsTextField.getText();
-        String deadlineString = deadlineTextField.getText();
+        LocalDate selectedDate = deadlineDatePicker.getValue();
+        LocalDateTime deadline = null;
+        if (selectedDate != null) {
+            deadline = selectedDate.atStartOfDay();
+        }
 
         if (noteType.equals("Personal")) {
-            addPersonalNote(title, description, details, deadlineString);
+            addPersonalNote(title, description, details, deadline);
         } else if (noteType.equals("Work")) {
-            addWorkNote(title, description, details, deadlineString);
+            String meetingLink = meetingLinkTextField.getText();
+            addWorkNote(title, description, details, deadline, meetingLink);
         } else {
             System.out.println("Invalid note type. Please try again.");
         }
     }
 
-    private void addPersonalNote(String title, String description, String details, String deadlineString) {
+    private void addPersonalNote(String title, String description, String details, LocalDateTime deadline) {
         try {
-            LocalDateTime deadline = LocalDateTime.parse(deadlineString, Note.DATE_TIME_FORMATTER);
             Personal note = new Personal(title, description, details, deadline);
             personalNotes.add(note);
             System.out.println("Personal note added successfully!");
@@ -79,11 +104,8 @@ public class MainController {
         }
     }
 
-    private void addWorkNote(String title, String description, String details, String deadlineString) {
-        String meetingLink = meetingLinkTextField.getText();
-
+    private void addWorkNote(String title, String description, String details, LocalDateTime deadline, String meetingLink) {
         try {
-            LocalDateTime deadline = LocalDateTime.parse(deadlineString, Note.DATE_TIME_FORMATTER);
             Work note = new Work(title, description, details, deadline, meetingLink);
             workNotes.add(note);
             System.out.println("Work note added successfully!");
@@ -91,6 +113,7 @@ public class MainController {
             System.out.println("Invalid deadline format. Note not added.");
         }
     }
+
 
     @FXML
     private void deleteNote(ActionEvent event) {

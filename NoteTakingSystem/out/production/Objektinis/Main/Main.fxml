@@ -12,11 +12,12 @@
 <?import javafx.collections.FXCollections?>
 <?import java.lang.String?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.DatePicker?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            stylesheets="@/styles.css"
+            stylesheets="styles.css"
             fx:controller="Main.MainController"
-            prefHeight="500.0" prefWidth="600.0">
+            prefHeight="500.0" prefWidth="550.0">
 
     <VBox spacing="10" alignment="CENTER" layoutX="50" layoutY="50">
         <Label text="Note Taking System" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
@@ -32,24 +33,24 @@
             </ChoiceBox>
         </HBox>
         <HBox spacing="10">
-            <Label text="Note Title:" />
-            <TextField fx:id="titleTextField" />
+            <Label text="Title:" />
+            <TextField fx:id="titleTextField" disable="true" HBox.hgrow="ALWAYS" />
         </HBox>
         <HBox spacing="10">
-            <Label text="Note Description:" />
-            <TextField fx:id="descriptionTextField" />
+            <Label text="Description:" />
+            <TextField fx:id="descriptionTextField" disable="true" HBox.hgrow="ALWAYS" />
         </HBox>
         <HBox spacing="10">
-            <Label text="Note Details:" />
-            <TextField fx:id="detailsTextField" />
+            <Label text="Details:" />
+            <TextField fx:id="detailsTextField" disable="true" HBox.hgrow="ALWAYS" />
         </HBox>
         <HBox spacing="10">
-            <Label text="Note Deadline (YYYY-MM-DD HH:mm):" />
-            <TextField fx:id="deadlineTextField" />
+            <Label text="Note Deadline:" />
+            <DatePicker fx:id="deadlineDatePicker" disable="true" />
         </HBox>
         <HBox spacing="10">
             <Label text="Meeting Link:" />
-            <TextField fx:id="meetingLinkTextField" />
+            <TextField fx:id="meetingLinkTextField" disable="true" HBox.hgrow="ALWAYS" />
         </HBox>
         <HBox spacing="10" alignment="CENTER">
             <Button text="Add Note" onAction="#addNote" />
@@ -62,3 +63,5 @@
     </VBox>
 
 </AnchorPane>
+
+
