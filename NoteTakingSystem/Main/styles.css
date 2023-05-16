@@ -1,0 +1,42 @@
+/* styles.css */
+
+/* Styling for the root AnchorPane */
+.anchor-pane {
+    /* Add any desired styles for the root AnchorPane here */
+}
+
+/* Styling for the Label with text "Note Taking System" */
+.label-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+/* Styling for the HBox elements */
+.hbox {
+    /* Add any desired styles for the HBox elements here */
+}
+
+/* Styling for the Label elements */
+.label {
+    /* Add any desired styles for the Label elements here */
+}
+
+/* Styling for the ChoiceBox */
+.choice-box {
+    /* Add any desired styles for the ChoiceBox here */
+}
+
+/* Styling for the TextField elements */
+.text-field {
+    /* Add any desired styles for the TextField elements here */
+}
+
+/* Styling for the Button elements */
+.button {
+    /* Add any desired styles for the Button elements here */
+}
+
+/* Styling for the TextArea */
+.text-area {
+    /* Add any desired styles for the TextArea here */
+}

@@ -1,0 +1,52 @@
+/* styles.css */
+
+/* AnchorPane */
+.anchor-pane {
+    background-color: #f4f4f4;
+}
+
+/* VBox */
+.vbox {
+    padding: 20px;
+}
+
+/* Label */
+.label {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+/* HBox */
+.hbox {
+    margin-bottom: 10px;
+}
+
+/* ChoiceBox */
+.choice-box {
+    -fx-background-color: #ffffff;
+}
+
+/* TextField */
+.text-field {
+    -fx-background-color: #ffffff;
+    -fx-padding: 5px;
+    -fx-pref-height: 30px;
+    -fx-border-color: #cccccc;
+    -fx-border-width: 1px;
+}
+
+/* Button */
+.button {
+    -fx-background-color: #4caf50;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+}
+
+/* TextArea */
+.text-area {
+    -fx-background-color: #ffffff;
+    -fx-padding: 5px;
+    -fx-pref-height: 200px;
+    -fx-border-color: #cccccc;
+    -fx-border-width: 1px;
+}
