@@ -24,6 +24,7 @@ public class Personal extends Note implements Creatable, Cloneable, Serializable
     public ArrayList<String> getShoppingList() { return shoppingList; }
     public ArrayList<String> getBirthdayGiftIdeas() { return birthdayGiftIdeas; }
     public static int getNumberOfNotes() { return numberOfPersonalNotes; }
+    //public LocalDateTime getCreationDate() { return super.creationDate; }
     public void addItemToShoppingList(String item) { shoppingList.add(item); }
     public void addBirthdayGiftIdea(String idea) { birthdayGiftIdeas.add(idea); }
 

@@ -10,6 +10,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 import java.time.format.DateTimeParseException;
+
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,6 +19,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+
+import javax.swing.*;
 
 public class MainController {
 
@@ -58,12 +62,18 @@ public class MainController {
                     detailsTextField.setDisable(false);
                     deadlineDatePicker.setDisable(false);
                     meetingLinkTextField.setDisable(true);
+                    addNoteButton.setDisable(false);
+                    deleteNoteButton.setDisable(false);
+                    displayNotesButton.setDisable(false);
                 } else if (selectedNoteType.equals("Work")) {
                     titleTextField.setDisable(false);
                     descriptionTextField.setDisable(false);
                     detailsTextField.setDisable(false);
                     deadlineDatePicker.setDisable(false);
                     meetingLinkTextField.setDisable(false);
+                    addNoteButton.setDisable(false);
+                    deleteNoteButton.setDisable(false);
+                    displayNotesButton.setDisable(false);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -90,35 +100,101 @@ public class MainController {
             String meetingLink = meetingLinkTextField.getText();
             addWorkNote(title, description, details, deadline, meetingLink);
         } else {
-            System.out.println("Invalid note type. Please try again.");
+            notesTextArea.setText("Invalid note type. Please try again.");
         }
     }
 
     private void addPersonalNote(String title, String description, String details, LocalDateTime deadline) {
         try {
             Personal note = new Personal(title, description, details, deadline);
+            if(title == null || deadline == null)
+                throw new Exception("Empty fields");
+
             personalNotes.add(note);
-            System.out.println("Personal note added successfully!");
+            notesTextArea.setText("Personal note added successfully!");
         } catch (Exception e) {
-            System.out.println("Invalid deadline format. Note not added.");
+            notesTextArea.setText("Invalid deadline format - note not added.");
         }
     }
 
     private void addWorkNote(String title, String description, String details, LocalDateTime deadline, String meetingLink) {
         try {
             Work note = new Work(title, description, details, deadline, meetingLink);
+            if(title == null || deadline == null)
+                throw new Exception("Empty fields");
+
             workNotes.add(note);
-            System.out.println("Work note added successfully!");
+            notesTextArea.setText("Work note added successfully!");
         } catch (Exception e) {
-            System.out.println("Invalid deadline format. Note not added.");
+            notesTextArea.setText("Invalid deadline format - note not added.");
         }
     }
 
-
     @FXML
     private void deleteNote(ActionEvent event) {
-        // Delete note functionality
+        String noteType = noteTypeChoiceBox.getValue();
+
+        if (noteType != null) {
+            displayNotes(event);
+            Platform.runLater(() -> {
+                int index = getIndexFromUserInput();
+
+                if (index >= 0) {
+                    if (noteType.equals("Personal")) {
+                        deletePersonalNoteAtIndex(index);
+                    } else if (noteType.equals("Work")) {
+                        deleteWorkNoteAtIndex(index);
+                    } else {
+                        displayErrorMessage("Invalid note type. Please try again.");
+                    }
+                } else {
+                    displayErrorMessage("Invalid note index. Please try again.");
+                }
+            });
+        } else {
+            displayErrorMessage("Invalid note type. Please try again.");
+        }
     }
+
+    private int getIndexFromUserInput() {
+        String indexInput = JOptionPane.showInputDialog("Enter the index of the note to delete:");
+        int index = -1;
+
+        try {
+            index = Integer.parseInt(indexInput);
+        } catch (NumberFormatException e) {
+            // Handle parsing error
+        }
+
+        return index;
+    }
+
+    private void deletePersonalNoteAtIndex(int index) {
+        if (index >= 0 && index < personalNotes.size()) {
+            Personal note = personalNotes.remove(index);
+            displaySuccessMessage("Personal note deleted: " + note.getTitle());
+        } else {
+            displayErrorMessage("Invalid personal note index. Please try again.");
+        }
+    }
+
+    private void deleteWorkNoteAtIndex(int index) {
+        if (index >= 0 && index < workNotes.size()) {
+            Work note = workNotes.remove(index);
+            displaySuccessMessage("Work note deleted: " + note.getTitle());
+        } else {
+            displayErrorMessage("Invalid work note index. Please try again.");
+        }
+    }
+
+    private void displayErrorMessage(String message) {
+        notesTextArea.setText(message);
+    }
+
+    private void displaySuccessMessage(String message) {
+        notesTextArea.setText(message);
+    }
+
 
     @FXML
     private void displayNotes(ActionEvent event) {
@@ -133,7 +209,7 @@ public class MainController {
                 displayAllNotes();
             }
         } else {
-            System.out.println("Invalid note type. Please try again.");
+            notesTextArea.setText("Invalid note type. Please try again.");
         }
     }
 
@@ -155,27 +231,33 @@ public class MainController {
 
     private void displayAllNotes() {
         StringBuilder sb = new StringBuilder("All Notes:\n");
-        sb.append("Personal Notes:\n");
-        for (int i = 0; i < personalNotes.size(); i++) {
-            sb.append("[ ").append(i).append(" ] ").append(personalNotes.get(i)).append("\n");
-        }
-        sb.append("\nWork Notes:\n");
-        for (int i = 0; i < workNotes.size(); i++) {
-            sb.append("[ ").append(i).append(" ] ").append(workNotes.get(i)).append("\n");
-        }
-        notesTextArea.setText(sb.toString());
+        displayPersonalNotes();
+        displayWorkNotes();
     }
+
 
     @FXML
     private void saveNotes() {
         Thread thread = new Thread(new SaveButtonThread(personalNotes, workNotes));
         thread.start();
+        try {
+            thread.join();
+            notesTextArea.setText("Notes saved successfully!");
+        } catch (InterruptedException e) {
+            notesTextArea.setText("Error occurred while saving notes: " + e.getMessage());
+        }
     }
 
     @FXML
     private void loadNotes() {
         Thread thread = new Thread(new LoadButtonThread(personalNotes, workNotes));
         thread.start();
+        try {
+            thread.join();
+            notesTextArea.setText("Notes loaded successfully!");
+        } catch (InterruptedException e) {
+            notesTextArea.setText("Error occurred while loading notes: " + e.getMessage());
+        }
     }
 
 };

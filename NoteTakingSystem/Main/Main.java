@@ -27,8 +27,8 @@ import static java.awt.Color.BLACK;
 public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
-        ManageNote noteTakingSystem = new ManageNote();
-        noteTakingSystem.start();
+//        ManageNote noteTakingSystem = new ManageNote();
+//        noteTakingSystem.start();
     }
 
 

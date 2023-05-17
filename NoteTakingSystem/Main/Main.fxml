@@ -45,7 +45,7 @@
             <TextField fx:id="detailsTextField" disable="true" HBox.hgrow="ALWAYS" />
         </HBox>
         <HBox spacing="10">
-            <Label text="Note Deadline:" />
+            <Label text="Deadline:" />
             <DatePicker fx:id="deadlineDatePicker" disable="true" />
         </HBox>
         <HBox spacing="10">
@@ -53,9 +53,9 @@
             <TextField fx:id="meetingLinkTextField" disable="true" HBox.hgrow="ALWAYS" />
         </HBox>
         <HBox spacing="10" alignment="CENTER">
-            <Button text="Add Note" onAction="#addNote" />
-            <Button text="Delete Note" onAction="#deleteNote" />
-            <Button text="Display Notes" onAction="#displayNotes" />
+            <Button text="Add Note" fx:id="addNoteButton" onAction="#addNote" disable="true" />
+            <Button text="Delete Note" fx:id="deleteNoteButton" onAction="#deleteNote" disable="true" />
+            <Button text="Display Notes" fx:id="displayNotesButton" onAction="#displayNotes" disable="true" />
             <Button text="Save Notes" onAction="#saveNotes" />
             <Button text="Load Notes" onAction="#loadNotes" />
         </HBox>

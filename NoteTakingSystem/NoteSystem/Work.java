@@ -87,18 +87,18 @@ public class Work extends Note implements Postponable, Cloneable, Serializable
     @Override
     public String toString()
     {
-        StringBuilder names = new StringBuilder();
-        for (String name : this.personNames)
-            names.append(name).append(", ");
-        if (names.length() > 0)
-            names.delete(names.length() - 2, names.length());
-        StringBuilder creds = new StringBuilder();
-        for (String cred : credentials)
-            creds.append(cred).append(", ");
-        if (creds.length() > 0)
-            creds.delete(creds.length() - 2, creds.length());
+//        StringBuilder names = new StringBuilder();
+//        for (String name : this.personNames)
+//            names.append(name).append(", ");
+//        if (names.length() > 0)
+//            names.delete(names.length() - 2, names.length());
+//        StringBuilder creds = new StringBuilder();
+//        for (String cred : credentials)
+//            creds.append(cred).append(", ");
+//        if (creds.length() > 0)
+//            creds.delete(creds.length() - 2, creds.length());
 
-        return super.toString() + "\nPerson names: " + names.toString() + "\nCredentials: " + creds.toString() +
+        return super.toString() + /*"\nPerson names: " + names.toString() + "\nCredentials: " + creds.toString() +*/
                 "\nMeeting Link: " + meetingLink;
     }
 
@@ -122,6 +122,7 @@ public class Work extends Note implements Postponable, Cloneable, Serializable
     // get functions
     public List<String> getPersonNames() { return personNames; }
     public List<String> getCredentials() { return credentials; }
+    //public LocalDateTime getCreationDate() { return super.creationDate; }
     public String getMeetingLink() { return meetingLink; }
 
     // set functions
