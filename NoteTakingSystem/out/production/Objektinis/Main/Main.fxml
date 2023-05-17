@@ -19,10 +19,10 @@
             fx:controller="Main.MainController"
             prefHeight="500.0" prefWidth="550.0">
 
-    <VBox spacing="10" alignment="CENTER" layoutX="50" layoutY="50">
+    <VBox spacing="10" alignment="CENTER" layoutX="50" layoutY="10">
         <Label text="Note Taking System" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
         <HBox spacing="10">
-            <Label text="Note Type:" />
+            <Label text="Type:" />
             <ChoiceBox fx:id="noteTypeChoiceBox">
                 <items>
                     <FXCollections fx:factory="observableArrayList">

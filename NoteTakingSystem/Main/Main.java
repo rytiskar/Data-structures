@@ -40,10 +40,10 @@ public class Main extends Application {
         // Create a new scene
         Scene scene = new Scene(root);
         // Set the scene on the primary stage
-        scene.getStylesheets().add(Main.class.getResource("styles.css").toExternalForm());
+        //scene.getStylesheets().add(MainController.class.getResource("styles.css").toExternalForm());
         stage.setScene(scene);
 
-        scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
+        //scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
 
         // Set the stage title
         stage.setTitle("Note Taking System");
