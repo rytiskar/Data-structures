@@ -86,7 +86,3 @@ Follow these steps:
 - `Personal`: `Serializable` and `Cloneable` enable serialization and cloning operations.
 - `Work`: `Serializable` and `Cloneable` support serialization and cloning operations.
 
-## Program screenshot
-![Screenshot](https://github.com/rytiskar/University-projects/blob/main/NoteTakingSystem/Program.png)
-
-
