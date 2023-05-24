@@ -87,6 +87,6 @@ Follow these steps:
 - `Work`: `Serializable` and `Cloneable` support serialization and cloning operations.
 
 ## Program screenshot
-![Screenshot](https://github.com/rytiskar/University-projects/blob/main/NoteTakingSystem/ProgramScreenshot.png)
+![Screenshot](https://github.com/rytiskar/University-projects/blob/main/NoteTakingSystem/Program.png)
 
 
