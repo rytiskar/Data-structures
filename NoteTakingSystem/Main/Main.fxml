@@ -17,7 +17,7 @@
             xmlns:fx="http://javafx.com/fxml"
             stylesheets="styles.css"
             fx:controller="Main.MainController"
-            prefHeight="500.0" prefWidth="550.0">
+            prefHeight="550.0" prefWidth="700.0">
 
     <VBox spacing="10" alignment="CENTER" layoutX="50" layoutY="10">
         <Label text="Note Taking System" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
@@ -58,6 +58,8 @@
             <Button text="Display Notes" fx:id="displayNotesButton" onAction="#displayNotes" disable="true" />
             <Button text="Save Notes" onAction="#saveNotes" />
             <Button text="Load Notes" onAction="#loadNotes" />
+            <Button text="Push Deadline" fx:id="pushDeadlineButton" onAction="#pushDeadline" disable="true" />
+            <Button text="Sort" fx:id="sortNotesButton" onAction="#sortNotes" disable="true" />
         </HBox>
         <TextArea fx:id="notesTextArea" prefWidth="300" prefHeight="200" />
     </VBox>
