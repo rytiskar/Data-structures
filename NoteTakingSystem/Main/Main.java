@@ -27,28 +27,16 @@ import static java.awt.Color.BLACK;
 public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
-//        ManageNote noteTakingSystem = new ManageNote();
-//        noteTakingSystem.start();
     }
-
 
     @Override
     public void start(Stage stage) throws Exception {
-// Load the FXML file
+
         Parent root = FXMLLoader.load(getClass().getResource("Main.fxml"));
 
-        // Create a new scene
         Scene scene = new Scene(root);
-        // Set the scene on the primary stage
-        //scene.getStylesheets().add(MainController.class.getResource("styles.css").toExternalForm());
         stage.setScene(scene);
-
-        //scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
-
-        // Set the stage title
         stage.setTitle("Note Taking System");
-
-        // Show the primary stage
         stage.show();
     }
 }

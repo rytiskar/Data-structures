@@ -55,7 +55,7 @@
     -fx-background-color: #ecfcec;
 }
 
-.text-field:filled + .title-label {
+.text-field:filled .title-label {
     -fx-text-fill: #4caf50;
 }
 
@@ -98,6 +98,6 @@
     -fx-background-color: #ecfcec;
 }
 
-.text-area:filled + .title-label {
+.text-area:filled .title-label {
     -fx-text-fill: #4caf50;
 }
