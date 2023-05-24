@@ -73,6 +73,7 @@ Follow these steps:
 - Methods: `clone()`, overrides `createNote()` and `deleteNote()`, `addItemToShoppingList()`, `addBirthdayGiftIdea()`, getters and setters.
 
 ## UML diagram
+![UML](https://github.com/rytiskar/University-projects/blob/main/NoteTakingSystem/UML.png)
 
 ## Future perspectives
 - **Enhanced user interface:** Improve the visual usability of the application interface.
@@ -84,5 +85,8 @@ Follow these steps:
 - `Note`: `Serializable` allows object serialization for storage or transmission.
 - `Personal`: `Serializable` and `Cloneable` enable serialization and cloning operations.
 - `Work`: `Serializable` and `Cloneable` support serialization and cloning operations.
+
+## Program screenshot
+![Screenshot](https://github.com/rytiskar/University-projects/blob/main/NoteTakingSystem/ProgramScreenshot.png)
 
 
